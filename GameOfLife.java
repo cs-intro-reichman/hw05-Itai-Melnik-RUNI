@@ -12,9 +12,9 @@ public class GameOfLife {
 		// Uncomment the test that you want to execute, and re-compile.
 		// (Run one test at a time).
 		test1(fileName);
-		//test2(fileName);
-		//test3(fileName, 3);
-		//play(fileName);
+		// test2(fileName);
+		// test3(fileName, 3);
+		// play(fileName);
 	}
 
 	// Reads the data file and prints the initial board.
@@ -87,7 +87,8 @@ public class GameOfLife {
 					}
 
 					count++;
-					if (count > line.length()-1) break;
+					if (count > line.length() - 1)
+						break;
 				}
 
 			}
@@ -101,14 +102,14 @@ public class GameOfLife {
 	// Uses the cellValue(board,i,j) function to compute the value of each
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
-		int [][] newBoard = new int[board.length][board[0].length];
+		int[][] newBoard = new int[board.length][board[0].length];
 
-		for (int i = 1; i < newBoard.length-1; i++) {
-			for (int j = 1; j < newBoard[i].length-1; j++) {
+		for (int i = 1; i < newBoard.length - 1; i++) {
+			for (int j = 1; j < newBoard[i].length - 1; j++) {
 				newBoard[i][j] = cellValue(board, i, j);
-				
+
 			}
-			
+
 		}
 		return newBoard;
 	}
@@ -129,23 +130,18 @@ public class GameOfLife {
 		int cellValue = board[i][j];
 		int count = count(board, i, j);
 
-		//cell is alive
-		if(cellValue == 1){
-			if(count > 3){
+		// cell is alive
+		if (cellValue == 1) {
+			if (count > 3) {
+				cellValue = 0;
+			} else if (count < 2) {
 				cellValue = 0;
 			}
-			else if(count < 2){
-				cellValue = 0;
-			} 
-		}
-		else if(cellValue == 0){
-			if(count == 3){
+		} else if (cellValue == 0) {
+			if (count == 3) {
 				cellValue = 1;
 			}
 		}
-		
-
-	
 
 		return cellValue;
 	}
@@ -159,14 +155,16 @@ public class GameOfLife {
 		//// Replace the following statement with your code.
 		int count = 0;
 
-		for (int x = i-1 ; x <= i+1; x++) {
-			for (int y= j-1; y <= j+1; y++) {
-				if(board[x][y]== 1)count++;
+		for (int x = i - 1; x <= i + 1; x++) {
+			for (int y = j - 1; y <= j + 1; y++) {
+				if (board[x][y] == 1)
+					count++;
 			}
-			
+
 		}
 
-		if (board[i][j]== 1) count --;
+		if (board[i][j] == 1)
+			count--;
 
 		return count;
 	}
@@ -175,14 +173,15 @@ public class GameOfLife {
 	public static void print(int[][] arr) {
 		//// Write your code here.
 		String outputString;
-		
-		for (int i = 1; i < arr.length-1; i++){
-			outputString = "";
-			for (int j = 1; j < arr[j].length-1; j++){
-			outputString = outputString + ((outputString != "") ? "\t": "" ) + arr[i][j];
-			}
 
-			System.out.println(outputString);
+		for (int i = 1; i < arr.length - 1; i++) {
+			outputString = "";
+			for (int j = 1; j < arr[j].length - 1; j++) {
+
+				System.out.printf("%d ", arr[i][j]);
+			}
+			System.out.println();
+
 		}
 	}
 
@@ -228,7 +227,6 @@ public class GameOfLife {
 		StdDraw.show();
 		StdDraw.pause(100);
 	}
-
 
 	public static void show1(int[][] board) {
 		StdDraw.setCanvasSize(1000, 1000);
