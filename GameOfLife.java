@@ -176,7 +176,7 @@ public class GameOfLife {
 
 		for (int i = 1; i < arr.length - 1; i++) {
 			outputString = "";
-			for (int j = 1; j < arr[j].length - 1; j++) {
+			for (int j = 1; j < arr[i].length - 1; j++) {
 
 				System.out.printf("  %d", arr[i][j]);
 			}
